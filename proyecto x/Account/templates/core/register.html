@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+  <link rel="stylesheet" href="{% static 'styles/Account.css' %}">
+  <style>
+    .login-link {
+      display: block;
+      margin-top: 20px;
+      font-size: 1.6rem;
+      color: #00fffc;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .login-link:hover {
+      text-decoration: underline;
+    }
+
+    .stark-login form {
+      height: auto;
+      width: 700px !important;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .stark-login input,
+    .stark-login button,
+    .form-control {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+   .stark-login button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px; 
+  font-size: 1.5rem;
+  padding: 0 20px;
+  line-height: 1;
+}
+    #fade-box {
+      margin-top: 50px;
+    }
+
+    #logo {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-top: 80px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #00fffc;
+    }
+
+    @keyframes form-entry {
+      0% {
+        height: 0;
+        width: 0;
+        opacity: 0;
+        padding: 0;
+      }
+
+      20% {
+        height: 0;
+        border: 1px solid #00a4a2;
+        width: 0;
+        opacity: 0;
+        padding: 0;
+      }
+
+      40% {
+        width: 0;
+        height: 450px;
+        border: 6px solid #00a4a2;
+        opacity: 1;
+        padding: 0;
+      }
+
+      100% {
+        height: 450px;
+        width: 590px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo arriba del formulario -->
+  <div id="logo">
+    REGISTER PROYECT X
+  </div>
+
+  <div id="fade-box" class="stark-login">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      {% for field in form %}
+        {{ field.errors }}
+        {{ field }}
+      {% endfor %}
+      <button type="submit">Registrarse</button>
+    </form>
+
+    <a href="{% url 'login' %}" class="login-link">¿Ya tienes cuenta? Inicia sesión</a>
+  </div>
+
+  <div id="circle1">
+    <div id="inner-cirlce1"></div>
+  </div>
+
+  <div class="hexagons">⬢⬢⬢⬢⬢⬢⬢</div>
+</body>
+</html>

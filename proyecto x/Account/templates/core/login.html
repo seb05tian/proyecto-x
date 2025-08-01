@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'styles/Account.css' %}">
+  <style>
+    .register-link {
+      display: block;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #00fffc;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .register-link:hover {
+      text-decoration: underline;
+    }
+
+    .stark-login {
+      font-size: 1.1rem;
+    }
+
+    .stark-login form {
+      width: 600px;
+      padding: 20px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .stark-login input,
+    .stark-login button,
+    .form-control {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+
+    #fade-box {
+      margin-top: 50px; /* Ajustado para que el logo no quede tan separado */
+    }
+
+    #logo {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-top: 80px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #00fffc;
+    }
+    .stark-login button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px; 
+  font-size: 1.5rem;
+  padding: 0 20px;
+  line-height: 1;
+}
+  </style>
+</head>
+<body>
+  <!-- Logo de texto arriba del formulario -->
+  <div id="logo">
+    LOGIN SYSTEM
+  </div>
+
+  <div id="fade-box" class="stark-login">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      {% for field in form %}
+        {{ field.errors }}
+        {{ field }}
+      {% endfor %}
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <a href="{% url 'register' %}" class="register-link">¿No tienes cuenta? Regístrate</a>
+  </div>
+
+  <div id="circle1">
+    <div id="inner-cirlce1"></div>
+  </div>
+
+  <div class="hexagons">⬢⬢⬢⬢⬢⬢⬢</div>
+</body>
+</html>
