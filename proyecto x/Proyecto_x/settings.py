@@ -32,7 +32,7 @@ AUTH_USER_MODEL = 'Account.CustomUser'
 # Application definition
 
 INSTALLED_APPS = [
-    'habits',
+    'SistemaPos',
     'Account',
     'django.contrib.admin',
     'django.contrib.auth',
