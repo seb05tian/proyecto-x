@@ -1,0 +1,122 @@
+/* ---------- variables ---------- */
+:root {
+  --azul: #0d55a2;
+  --azul-osc: #003560;
+  --verde: #2e7d32;
+  --rojo: #c62828;
+  --amarillo: #f9a825;
+}
+
+/* ---------- reset / tipografía ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---------- sidebar ---------- */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 230px;
+  background: var(--azul);
+  color: #fff;
+  overflow-y: auto;
+}
+
+#sidebar .logo {
+  background: #d5d5d5;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sidebar .logo img {
+  width: 72px;
+  height: 72px;
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0 0 80px 0;
+}
+
+#sidebar a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 8px 24px;
+}
+
+#sidebar a.active {
+  background: var(--azul-osc);
+}
+
+#sidebar li.room {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+#sidebar li.room ul {
+  margin-left: 14px;
+  font-size: 16px;
+}
+
+#sidebar .logout {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: var(--azul-osc);
+  font-size: 24px;
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* ---------- main ---------- */
+main {
+  margin-left: 230px;
+  padding: 24px;
+}
+
+h1 {
+  color: var(--azul);
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 32px;
+}
+
+.table-card {
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.table-card .label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.table-card .icon {
+  font-size: 88px;
+  line-height: 1;
+}
+
+/* Colores según estado */
+.table-card.green .icon {
+  color: var(--verde);
+}
+.table-card.red .icon {
+  color: var(--rojo);
+}
+.table-card.yellow .icon {
+  color: var(--amarillo);
+}

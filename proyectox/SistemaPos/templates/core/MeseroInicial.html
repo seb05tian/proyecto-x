@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sala {{ sala.nombre }}</title>
+
+    {# ▸ Carga la hoja de estilos externa #}
+    <link
+      <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/sala.css') }}"
+    />
+
+    rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav id="sidebar">
+      <div class="logo">
+        <a href="{{ url_for('home') }}">
+          <!-- Reemplaza con tu SVG o PNG -->
+          <img
+            src="{{ url_for('static', filename='icons/home.svg') }}"
+            alt="Inicio"
+          />
+        </a>
+      </div>
+
+      <ul>
+        {% for s in salas %}
+        <li class="room">
+          <a
+            class="{% if s.id == sala.id %}active{% endif %}"
+            href="{{ url_for('salas.ver', sala_id=s.id) }}"
+          >
+            Sala {{ loop.index }}
+          </a>
+          <ul>
+            {% for m in s.mesas %}
+            <li>
+              <a href="{{ url_for('mesas.ver', mesa_id=m.id) }}">
+                Mesa {{ m.numero }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <a class="logout" href="{{ url_for('auth.logout') }}">Salir</a>
+    </nav>
+
+    <main>
+      <h1>SALA {{ sala.nombre }}</h1>
+
+      <div class="grid">
+        {% for mesa in sala.mesas %}
+        <a
+          class="table-card {{ mesa.color_css }}"
+          href="{{ url_for('mesas.ver', mesa_id=mesa.id) }}"
+        >
+          <div class="label">MESA {{ mesa.numero }}</div>
+          <div class="icon">🪑</div>
+          {# Sustituye por un icono #}
+        </a>
+        {% endfor %}
+      </div>
+    </main>
+  </body>
+</html>
