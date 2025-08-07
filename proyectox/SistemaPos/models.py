@@ -29,7 +29,7 @@ class Mesa(models.Model):
     ESTADO_CHOICES = [
         ('libre', 'Libre'),
         ('ocupada', 'Ocupada'),
-        ('espera', 'En espera'),
+        ('servicio', 'servicio'),
     ]
 
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
@@ -79,7 +79,12 @@ class MovimientoCaja(models.Model):
     TIPO_CHOICES = [
         ('Venta', 'Venta'),
     ]
+    TIPO_CHOICES_PAGO = [
 
+        ('Efectivo', 'Efectivo'),
+        ('Tarjeta', 'Tarjeta')
+    ]
+    tipo_pago = models.CharField(max_length=20, choices=TIPO_CHOICES_PAGO)
     fecha = models.DateTimeField(auto_now_add=True)
     tipo_movimiento = models.CharField(max_length=20, choices=TIPO_CHOICES)
     concepto = models.TextField()
